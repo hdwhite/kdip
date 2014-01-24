@@ -249,9 +249,6 @@ public class SCHistoryWriter
 		//
 		ArrayList turnList = new ArrayList(100);	// array of TurnStates
 		
-		// add initial phase
-		turnList.add(world.getInitialTurnState());
-		
 		Iterator iter = world.getAllTurnStates().iterator();
 		while(iter.hasNext())
 		{
@@ -260,21 +257,14 @@ public class SCHistoryWriter
 			//
 			TurnState ts = (TurnState) iter.next();
 			Phase phase = ts.getPhase();
-			if(phase.getSeasonType() == Phase.SeasonType.FALL)
+			// It is possible for the winter adjustment to be skipped, so we default
+			// to checking at the spring movements if possible.
+			if((phase.getSeasonType() == Phase.SeasonType.SPRING &&
+					phase.getPhaseType() == Phase.PhaseType.MOVEMENT) ||
+				(phase.getPhaseType() == Phase.PhaseType.ADJUSTMENT &&
+					!iter.hasNext()))
 			{
-				if(phase.getPhaseType() == Phase.PhaseType.MOVEMENT)
-				{
-					if(iter.hasNext())
-					{
-						TurnState nextTS = (TurnState) iter.next();
-						if(nextTS.getPhase().getPhaseType() == Phase.PhaseType.RETREAT)
-						{
-							ts = nextTS;
-						}
-					}
-					
-					turnList.add(ts);
-				}
+				turnList.add(ts);
 			}
 		}
 		
@@ -347,10 +337,7 @@ public class SCHistoryWriter
 		
 		sb.append("</tr>");
 		
-		// First make the Start (Initial Row).
-		sb.append(makeSCCountTableRow(world.getInitialTurnState()));
-		
-		// make all other rows.
+		// make the rows.
 		Iterator iter = world.getAllTurnStates().iterator();
 		while(iter.hasNext())
 		{
@@ -360,21 +347,12 @@ public class SCHistoryWriter
 			//
 			TurnState ts = (TurnState) iter.next();
 			Phase phase = ts.getPhase();
-			if(phase.getSeasonType() == Phase.SeasonType.FALL)
+			if((phase.getSeasonType() == Phase.SeasonType.SPRING &&
+					phase.getPhaseType() == Phase.PhaseType.MOVEMENT) ||
+				(phase.getPhaseType() == Phase.PhaseType.ADJUSTMENT &&
+					!iter.hasNext()))
 			{
-				if(phase.getPhaseType() == Phase.PhaseType.MOVEMENT)
-				{
-					if(iter.hasNext())
-					{
-						TurnState nextTS = (TurnState) iter.next();
-						if(nextTS.getPhase().getPhaseType() == Phase.PhaseType.RETREAT)
-						{
-							ts = nextTS;
-						}
-					}
-					
-					sb.append(makeSCCountTableRow(ts));
-				}
+				sb.append(makeSCCountTableRow(ts));
 			}
 		}
 		
