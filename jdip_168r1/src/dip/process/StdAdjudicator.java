@@ -761,9 +761,10 @@ public class StdAdjudicator implements Adjudicator
 		}
 		
 		// Step 12a:
-		// Set supply center ownership, if we *were* in the FALL season.
+		// Set supply center ownership, if we *were* in the FALL season
+		// and the next turn would be an adjustment phase.
 		// this must occur before we can see if adjustment phase is to be skipped
-		if(oldPhase.getSeasonType() == Phase.SeasonType.FALL)
+		if(oldPhase.getSeasonType() == Phase.SeasonType.FALL && nextPhase.getPhaseType() == Phase.PhaseType.ADJUSTMENT)
 		{
 			setSCOwners();
 		}
@@ -835,6 +836,12 @@ public class StdAdjudicator implements Adjudicator
 			
 			if(areAllDestroyed)
 			{
+				// If it's fall, we need to update SC ownership since the retreat
+				// phase is being skipped.
+				if(oldPhase.getSeasonType() == Phase.SeasonType.FALL)
+				{
+					setSCOwners();
+				}
 				// advance phase by 1. Inform players why.
 				Phase p = nextTurnState.getPhase().getNext();
 				nextTurnState.setPhase(p);
