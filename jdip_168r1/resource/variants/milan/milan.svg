@@ -269,7 +269,7 @@
 		<jdipNS:PROVINCE name="por"><jdipNS:UNIT x="193 " y="1023"/><jdipNS:DISLODGED_UNIT x="180.5 " y="1010.5"/><jdipNS:SUPPLY_CENTER x="151 " y="1060"/></jdipNS:PROVINCE>
 		<jdipNS:PROVINCE name="pru"><jdipNS:UNIT x="877 " y="700"/><jdipNS:DISLODGED_UNIT x="864.5 " y="687.5"/></jdipNS:PROVINCE>
 		<jdipNS:PROVINCE name="rom"><jdipNS:UNIT x="700.4" y="1052.6"/><jdipNS:DISLODGED_UNIT x="690" y="1038.3"/><jdipNS:SUPPLY_CENTER x="719" y="1087"/></jdipNS:PROVINCE>
- 		<jdipNS:PROVINCE name="ruh"><jdipNS:UNIT x="648 " y="789"/><jdipNS:DISLODGED_UNIT x="635.5 " y="776.5"/></jdipNS:PROVINCE>
+ 		<jdipNS:PROVINCE name="ruh"><jdipNS:UNIT x="648 " y="789"/><jdipNS:DISLODGED_UNIT x="635.5 " y="776.5"/><jdipNS:SUPPLY_CENTER x="637" y="767"/></jdipNS:PROVINCE>
 		<jdipNS:PROVINCE name="rum"><jdipNS:UNIT x="1108" y="977"/><jdipNS:DISLODGED_UNIT x="1095.5" y="964.5"/><jdipNS:SUPPLY_CENTER x="1083" y="1014"/></jdipNS:PROVINCE>
 		<jdipNS:PROVINCE name="sav"><jdipNS:UNIT x="634.1" y="972"/><jdipNS:DISLODGED_UNIT x="623.7" y="981.1"/></jdipNS:PROVINCE>
 		<jdipNS:PROVINCE name="ser"><jdipNS:UNIT x="945 " y="1060"/><jdipNS:DISLODGED_UNIT x="932.5 " y="1047.5"/><jdipNS:SUPPLY_CENTER x="936 " y="1021"/></jdipNS:PROVINCE>
