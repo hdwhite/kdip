@@ -178,10 +178,10 @@
 			<jdipNS:POWERCOLOR power="austria" color="red"/>
 			<jdipNS:POWERCOLOR power="england" color="blue"/>
 			<jdipNS:POWERCOLOR power="france" color="deepskyblue"/>
-			<jdipNS:POWERCOLOR power="germany" color="gray"/>
-			<jdipNS:POWERCOLOR power="italy" color="olive"/>
-			<jdipNS:POWERCOLOR power="russia" color="lightgrey"/>
-			<jdipNS:POWERCOLOR power="turkey" color="goldenrod"/>
+			<jdipNS:POWERCOLOR power="germany" color="dimgray"/>
+			<jdipNS:POWERCOLOR power="italy" color="#608000"/>
+			<jdipNS:POWERCOLOR power="russia" color="gainsboro"/>
+			<jdipNS:POWERCOLOR power="turkey" color="darkgoldenrod"/>
 			<!-- crowded variant colors -->
 			<jdipNS:POWERCOLOR power="balkan" color="#36E600"/>
 			<jdipNS:POWERCOLOR power="lowland" color="#E67700"/>
@@ -627,7 +627,7 @@
 		.unitengland 	{fill:blue;			fill-opacity:0.85}
 		.unitfrance 	{fill:deepskyblue;	fill-opacity:0.85}
 		.unitgermany 	{fill:dimgray;		fill-opacity:0.85}
-		.unititaly 		{fill:olive;		fill-opacity:0.85}
+		.unititaly 		{fill:#608000;	fill-opacity:0.85}
 		.unitrussia 	{fill:gainsboro;	fill-opacity:1.0}
 		.unitturkey 	{fill:darkgoldenrod;	fill-opacity:0.85}
 		
