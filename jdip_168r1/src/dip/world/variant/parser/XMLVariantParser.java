@@ -53,6 +53,7 @@ import dip.world.Unit;
 import dip.world.variant.VariantManager;
 import dip.world.variant.data.BorderData;
 import dip.world.variant.data.InitialState;
+import dip.world.variant.data.Influence;
 import dip.world.variant.data.MapGraphic;
 import dip.world.variant.data.ProvinceData;
 import dip.world.variant.data.SupplyCenter;
@@ -72,6 +73,7 @@ public class XMLVariantParser implements VariantParser
 	public static final String EL_MAP = "MAP";
 	public static final String EL_STARTINGTIME = "STARTINGTIME";
 	public static final String EL_INITIALSTATE = "INITIALSTATE";
+	public static final String EL_INFLUENCE = "INFLUENCE";
 	public static final String EL_SUPPLYCENTER = "SUPPLYCENTER";
 	public static final String EL_POWER = "POWER";
 	public static final String EL_MAP_DEFINITION = "MAP_DEFINITION";
@@ -357,6 +359,19 @@ public class XMLVariantParser implements VariantParser
 				stateList.add(initialState);
 			}
 			variant.setInitialStates(stateList);
+
+			// influence (multiple)
+			nodes = elVariant.getElementsByTagName(EL_INFLUENCE);
+			List influenceList = new ArrayList(nodes.getLength());
+			for(int j=0; j<nodes.getLength(); j++)
+			{
+				element = (Element) nodes.item(j);
+				Influence influence = new Influence();
+				influence.setProvinceName( element.getAttribute(ATT_PROVINCE) );
+				influence.setPowerName( element.getAttribute(ATT_POWER) );
+				influenceList.add(influence);
+			}
+			variant.setInfluences(influenceList);
 			
 			// MAP element and children
 			element = getSingleElementByName(elVariant, EL_MAP);

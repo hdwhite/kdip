@@ -1017,8 +1017,16 @@ public class DefaultMapRenderer2 extends MapRenderer2
 					}
 					else
 					{
-						// set to original CSS style; no special hiliting here.
-						setCSSIfChanged(provinceGroupElement, tracker.getOriginalProvinceCSS());
+						if(position.getLastOccupier(province) != null && province.isLand())
+						{
+							setCSSIfChanged(provinceGroupElement, 
+								tracker.getPowerCSSClass(position.getLastOccupier(province)));
+						}
+						else
+						{
+							// use default province CSS styling, if not already
+							setCSSIfChanged(provinceGroupElement, tracker.getOriginalProvinceCSS());
+						}
 					}
 				}
 			}

@@ -44,6 +44,7 @@ public class Variant implements Cloneable, Comparable
 	private Power[] powers = null;
 	private Phase phase = null;
 	private InitialState[] istate = null;
+	private Influence[] influence = null;
 	private SupplyCenter[] supplyCenters = null;
 	private ProvinceData[] provinceData = null;
 	private int vcNumSCForVictory = 0;
@@ -98,6 +99,8 @@ public class Variant implements Cloneable, Comparable
 	public Phase getStartingPhase()			{ return phase; }
 	/** The starting InitialStates. */
 	public InitialState[] getInitialStates(){ return istate; }
+	/** The starting influences. */
+	public Influence[] getInfluences()		{ return influence; }
 	/** Returns Powers associated with this Variant. */
 	public Power[] getPowers() 				{ return powers; }
 	/** Returns SupplyCenter objects */
@@ -172,6 +175,12 @@ public class Variant implements Cloneable, Comparable
 		istate = (InitialState[]) stateList.toArray(new InitialState[stateList.size()]); 
 	}// setInitialStates()
 	
+	/** Sets the Influences, from a List */
+	public void setInfluences(List influenceList) 			
+	{ 
+		influence = (Influence[]) influenceList.toArray(new Influence[influenceList.size()]); 
+	}// setInitialStates()
+
 	/** Sets the supply centers, from a List */
 	public void setSupplyCenters(List supplyCenterList) 	
 	{ 
