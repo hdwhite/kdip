@@ -139,6 +139,11 @@
 		<INITIALSTATE province="ama" power="east" unit="fleet" />
 		<INITIALSTATE province="les" power="west" unit="fleet" />
 		<INITIALSTATE province="ves" power="west" unit="fleet" />
+		<!-- initial country borders -->
+		<INFLUENCE province="oly" power="north" />
+		<INFLUENCE province="gab" power="south" />
+		<INFLUENCE province="ech" power="east" />
+		<INFLUENCE province="hes" power="west" />
 	</VARIANT>
 	
 	<VARIANT name="Sail Ho! Crowded" version="2.0" aliases="sailho_crowded, sailho crowded">
@@ -205,6 +210,17 @@
 		<INITIALSTATE province="cup" power="cyprus" unit="fleet" />
 		<INITIALSTATE province="aph" power="cyprus" unit="fleet" />
 		<INITIALSTATE province="psy" power="cyprus" unit="army" />
+		<!-- initial country borders -->
+		<INFLUENCE province="alc" power="north" />
+		<INFLUENCE province="dei" power="north" />
+		<INFLUENCE province="jas" power="north" />
+		<INFLUENCE province="gab" power="south" />
+		<INFLUENCE province="per" power="south" />
+		<INFLUENCE province="ech" power="east" />
+		<INFLUENCE province="chi" power="east" />
+		<INFLUENCE province="hes" power="west" />
+		<INFLUENCE province="hin" power="dissentos" />
+		<INFLUENCE province="ser" power="dissentos" />
 	</VARIANT>                              
 	
 </VARIANTS>
