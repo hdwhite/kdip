@@ -201,7 +201,7 @@ public class DefaultMapRenderer2 extends MapRenderer2
 		renderSettings.put(KEY_SHOW_DISLODGED_UNITS, Boolean.TRUE);
 		renderSettings.put(KEY_SHOW_ORDERS_FOR_POWERS, powers);
 		renderSettings.put(KEY_SHOW_UNORDERED, Boolean.FALSE);
-		renderSettings.put(KEY_INFLUENCE_MODE, Boolean.FALSE);
+		renderSettings.put(KEY_INFLUENCE_MODE, Boolean.TRUE);
 		renderSettings.put(KEY_LABELS, VALUE_LABELS_NONE);
 		
 		// get map metadata
@@ -705,55 +705,6 @@ public class DefaultMapRenderer2 extends MapRenderer2
 		{
 			// ENTERING influence mode
 			// 
-			if(oldRenderSettings != null)
-			{
-				throw new IllegalStateException("already in influence mode!");
-			}
-			
-			// disable menu items early
-			cm.setEnabled(ClientMenu.VIEW_ORDERS, !value);
-			cm.setEnabled(ClientMenu.VIEW_UNITS, !value);
-			cm.setEnabled(ClientMenu.VIEW_DISLODGED_UNITS, !value);
-			cm.setEnabled(ClientMenu.VIEW_SUPPLY_CENTERS, !value);
-			cm.setEnabled(ClientMenu.VIEW_UNORDERED, !value);
-			cm.setEnabled(ClientMenu.VIEW_SHOW_MAP, !value);
-			
-			
-			// now clear the render settings
-			synchronized(renderSettings)
-			{
-				// copy old render settings
-				oldRenderSettings = (HashMap) renderSettings.clone();
-				
-				// if 'show unordered' was enabled, we must first disable it.
-				if(oldRenderSettings.get(MapRenderer2.KEY_SHOW_UNORDERED) == Boolean.TRUE)
-				{
-					renderSettings.put(MapRenderer2.KEY_SHOW_UNORDERED, Boolean.FALSE);
-				}
-				
-				renderSettings.clear();
-				renderSettings.put(MapRenderer2.KEY_SHOW_ORDERS_FOR_POWERS, new Power[0]);
-			}
-			
-			// hide layers we don't want (units, orders, sc)
-			SVGElement elLayer = (SVGElement) layerMap.get(LAYER_SC);
-			setElementVisibility(elLayer, false);
-			
-			elLayer = (SVGElement) layerMap.get(LAYER_UNITS);
-			setElementVisibility(elLayer, false);
-			
-			elLayer = (SVGElement) layerMap.get(LAYER_DISLODGED_UNITS);
-			setElementVisibility(elLayer, false);
-			
-			elLayer = (SVGElement) layerMap.get(LAYER_MAP);	// always show map in influence mode
-			setElementVisibility(elLayer, true);
-			
-			Power[] visiblePowers = (Power[]) oldRenderSettings.get(MapRenderer2.KEY_SHOW_ORDERS_FOR_POWERS);
-			for(int i=0; i<visiblePowers.length; i++)
-			{
-				setPowerOrderVisibility(visiblePowers[i], false);
-			}				
-			
 			// reset renderSetting influence state, since we just cleared it
 			// this must be set for unsyncUpdateProvince to work correctly
 			synchronized(renderSettings)
@@ -771,23 +722,11 @@ public class DefaultMapRenderer2 extends MapRenderer2
 		{
 			// EXITING influence mode
 			// 
-			if(oldRenderSettings == null)
-			{
-				throw new IllegalStateException("not in influence mode!");
-			}
-			
 			// reset renderSetting influence state, since we just cleared it
 			// this must be set for unsyncUpdateProvince to work correctly
 			// we also want to reset the KEY_INFLUENCE_MODE
 			synchronized(renderSettings)
 			{
-				Iterator iter = oldRenderSettings.entrySet().iterator();
-				while(iter.hasNext())
-				{
-					Map.Entry me = (Map.Entry) iter.next();
-					renderSettings.put(me.getKey(), me.getValue());
-				}
-				
 				renderSettings.put(MapRenderer2.KEY_INFLUENCE_MODE, Boolean.FALSE);
 			} 
 			
@@ -813,17 +752,6 @@ public class DefaultMapRenderer2 extends MapRenderer2
 			unsyncSetVisiblePowers();	// takes care of KEY_SHOW_ORDERS_FOR_POWERS
 			setElementVisibility( (SVGElement) layerMap.get(LAYER_MAP), 
 				((Boolean) getRenderSetting(KEY_SHOW_MAP)).booleanValue() );
-			
-			// destroy old render settings
-			oldRenderSettings = null;
-			
-			// enable menu items [late]
-			cm.setEnabled(ClientMenu.VIEW_ORDERS, !value);
-			cm.setEnabled(ClientMenu.VIEW_UNITS, !value);
-			cm.setEnabled(ClientMenu.VIEW_DISLODGED_UNITS, !value);
-			cm.setEnabled(ClientMenu.VIEW_SUPPLY_CENTERS, !value);
-			cm.setEnabled(ClientMenu.VIEW_UNORDERED, !value);
-			cm.setEnabled(ClientMenu.VIEW_SHOW_MAP, !value);
 		}
 	}// unsyncSetInfluenceMode()
 	
@@ -962,8 +890,27 @@ public class DefaultMapRenderer2 extends MapRenderer2
 		SVGElement provinceGroupElement = tracker.getProvinceHiliteElement();
 		if(provinceGroupElement != null)
 		{
+			if( renderSettings.get(MapRenderer2.KEY_SHOW_UNORDERED) == Boolean.TRUE
+				&& (getPhaseApropriateUnit(province) != null)
+				&& !isOrdered(province) ) 
+			{
+					// we are unordered!
+					// unordered CSS style takes precedence over any existing style.
+					setCSSIfChanged(provinceGroupElement, UNORDERED);
+			}
+			else if(province.hasSupplyCenter() && renderSettings.get(MapRenderer2.KEY_SHOW_SUPPLY_CENTERS) == Boolean.TRUE)
+			{
+				// get supply center owner
+				Power power = position.getSupplyCenterOwner(province);
+				setCSSIfChanged(provinceGroupElement, tracker.getPowerCSSClass(power));
+				
+				// supply center hilites (always available, but may always be same color)
+				// if power is null, default is 'scnopower'.
+				// these may be 'hidden' or 'visible' depending upon the Render settings for the above key.
+				setCSSIfChanged(tracker.getSCElement(), getSCCSSClass(power));
+			}
 			// if we are in 'influence mode', we hilite provinces differently
-			if(renderSettings.get(MapRenderer2.KEY_INFLUENCE_MODE) == Boolean.TRUE)
+			else if(renderSettings.get(MapRenderer2.KEY_INFLUENCE_MODE) == Boolean.TRUE)
 			{
 				// we are in influence mode
 				//
@@ -983,52 +930,8 @@ public class DefaultMapRenderer2 extends MapRenderer2
 			{
 				// we are NOT in influence mode
 				//
-				if( renderSettings.get(MapRenderer2.KEY_SHOW_UNORDERED) == Boolean.TRUE
-					&& (getPhaseApropriateUnit(province) != null)
-					&& !isOrdered(province) ) 
-				{
-						// we are unordered!
-						// unordered CSS style takes precedence over any existing style.
-						setCSSIfChanged(provinceGroupElement, UNORDERED);
-				}
-				else
-				{
-					if(province.hasSupplyCenter())
-					{
-						// get supply center owner
-						Power power = position.getSupplyCenterOwner(province);
-						
-						// note: 
-						// if we are not showing province SC (supply center) hilites, then
-						// we will just use the original CSS.
-						if(renderSettings.get(MapRenderer2.KEY_SHOW_SUPPLY_CENTERS) == Boolean.TRUE)
-						{
-							setCSSIfChanged(provinceGroupElement, tracker.getPowerCSSClass(power));
-						}
-						else
-						{
-							setCSSIfChanged(provinceGroupElement, tracker.getOriginalProvinceCSS());
-						}
-						
-						// supply center hilites (always available, but may always be same color)
-						// if power is null, default is 'scnopower'.
-						// these may be 'hidden' or 'visible' depending upon the Render settings for the above key.
-						setCSSIfChanged(tracker.getSCElement(), getSCCSSClass(power));
-					}
-					else
-					{
-						if(position.getLastOccupier(province) != null && province.isLand())
-						{
-							setCSSIfChanged(provinceGroupElement, 
-								tracker.getPowerCSSClass(position.getLastOccupier(province)));
-						}
-						else
-						{
-							// use default province CSS styling, if not already
-							setCSSIfChanged(provinceGroupElement, tracker.getOriginalProvinceCSS());
-						}
-					}
-				}
+				// use default province CSS styling, if not already
+				setCSSIfChanged(provinceGroupElement, tracker.getOriginalProvinceCSS());
 			}
 		}// if(provinceGroupElement != null)
 	}// unsyncUpdateProvince()
