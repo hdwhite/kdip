@@ -636,7 +636,7 @@ public class Support extends Order
 						//
 						Log.println("     -- move is convoying:");
 						
-						if(depMoveOS.getEvalState() == Tristate.FAILURE)
+						if(depMoveOS.getEvalState() == Tristate.FAILURE && !depMoveOS.hasFoundConvoyPath())
 						{
 							// 2.c.1
 							Log.println("        -- but move failed, so won't cut support.");
