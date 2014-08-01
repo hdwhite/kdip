@@ -294,7 +294,7 @@ public class Retreat extends Move
 				if(isStrongerThanAllOthers)
 				{
 					Log.println("    SUCCESS! [stronger than all others]");
-					evalResult = Tristate.UNCERTAIN;
+					evalResult = Tristate.SUCCESS;
 				}
 				
 				thisOS.setEvalState(evalResult);
