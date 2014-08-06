@@ -37,6 +37,7 @@ public class ProvinceData
 	private String[] adj_provinces = null;
 	private String[] adj_types = null;
 	private boolean isConvoyableCoast = false;
+	private boolean isImpassable = false;
 	private String[] borders = null;
 	
 	/** Full name of Province (e.g., Mid-Atlantic Ocean) */
@@ -72,6 +73,12 @@ public class ProvinceData
 	/** Gets whether this Province is a convoyable coastal province. */
 	public boolean getConvoyableCoast() 			{ return isConvoyableCoast; }
 	
+	/** Sets whether this Province is impassable */
+	public void setImpassable(boolean value)		{ isImpassable = value; }
+	
+	/** Gets whether this Province is impassable */
+	public boolean getImpassable()					{ return isImpassable; }
+	
 	/** Sets the Border ID names for this province (if any) */
 	public void setBorders(List list)
 	{
@@ -99,6 +106,8 @@ public class ProvinceData
 		sb.append(adj_types.length);
 		sb.append(",isConvoyableCoast=");
 		sb.append(isConvoyableCoast);
+		sb.append(",isImpassable=");
+		sb.append(isImpassable);
 		sb.append(",#borders=");
 		sb.append(borders.length);
 		sb.append(']');

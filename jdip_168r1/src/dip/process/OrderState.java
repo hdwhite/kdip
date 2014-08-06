@@ -367,13 +367,7 @@ public final class OrderState
 		}
 		
 		// Get the strength
-		int strength = getSupport(isCertain, dependentSupports, 1 + mod);
-		// if it is 0 or above, great! If not, make it 0!
-		if (strength >= 0) {
-			return strength;
-		} else {
-			return 0;
-		}
+		return getSupport(isCertain, dependentSupports, 1 + mod);
 	}// getSupport()
 	
 	
@@ -405,9 +399,12 @@ public final class OrderState
 				strength++;
 			}
 		}
-		
-		assert (strength >= 0);	// negative strength is not allowed!
-		return strength;
+		// if it is 0 or above, great! If not, make it 0!
+		if (strength >= 0) {
+			return strength;
+		} else {
+			return 0;
+		}
 	}// getSupport()
 	
 	
