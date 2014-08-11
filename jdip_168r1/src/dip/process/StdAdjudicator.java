@@ -798,7 +798,7 @@ public class StdAdjudicator implements Adjudicator
 		// If the next phase is an adjustment phase, and there are no adjustments to make,
 		// then skip it.
 		checkAdjustmentPhase();
-		
+	
 		// Step 13:
 		// in cases where there are dislodged units, but the dislodged units have
 		// no valid retreats, they are destroyed, instead of just dislodged.
@@ -1317,7 +1317,6 @@ public class StdAdjudicator implements Adjudicator
 		}
 		
 		
-		
 		// Step 7:
 		// a) Create SUCCESS and FAILURE results
 		for(int osIdx=0; osIdx<orderStates.length; osIdx++)
@@ -1334,7 +1333,6 @@ public class StdAdjudicator implements Adjudicator
 			}
 		}
 		
-		
 		// Step 9:
 		// Create the next TurnState. This is derived from the current turnstate,
 		// with the Map derived from the current Map.
@@ -1350,7 +1348,7 @@ public class StdAdjudicator implements Adjudicator
 		nextTurnState = new TurnState( turnState.getPhase().getNext() );
 		nextTurnState.setPosition(nextPosition);
 		nextTurnState.setWorld(turnState.getWorld());
-		
+
 		// create units in the appropriate places
 		for(int osIdx=0; osIdx<orderStates.length; osIdx++)
 		{
@@ -1373,7 +1371,7 @@ public class StdAdjudicator implements Adjudicator
 				Log.println("  moved: unit from ", os.getSourceProvince(), " to ", destProvince);
 			}
 		}
-		
+
 		// Step 10:
 		// Set supply center ownership, if we are in the FALL season.
 		if(turnState.getPhase().getSeasonType() == Phase.SeasonType.FALL)
@@ -1381,12 +1379,11 @@ public class StdAdjudicator implements Adjudicator
 			setSCOwners();
 		}
 		
-		
 		// Step 11:
 		// Determine if next phase is an Adjustmeent phase. If so, determine
 		// if we can skip it.
 		checkAdjustmentPhase();
-		
+
 		// Timestamp: Adjudication completed.
 		turnState.setResolved(true);
 		addResult(new TimeResult(STDADJ_COMPLETED));

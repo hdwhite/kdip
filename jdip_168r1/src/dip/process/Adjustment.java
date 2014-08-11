@@ -96,7 +96,26 @@ public class Adjustment
 				}
 			}
 		}
-		
+			
+		// Check to see if emergency measures can be enacted
+		if(power.hasEmergency())
+		{
+			boolean hasNoHomeSCs = true;
+			boolean hasAllHomeSCs = true;
+			
+			Province[] homeSupplyCenters = position.getHomeSupplyCenters(power);
+			for(int i = 0; i < homeSupplyCenters.length; i++)
+			{
+				if(power == position.getSupplyCenterOwner(homeSupplyCenters[i]))
+					hasNoHomeSCs = false;
+				else
+					hasAllHomeSCs = false;
+			}
+			
+			if(!hasNoHomeSCs && !hasAllHomeSCs)
+				ai.hasEmergency = true;
+		}
+	
 		return ai;
 	}// getAdjustmentInfo()
 	
@@ -170,8 +189,30 @@ public class Adjustment
 			}
 		}
 		
+		// Check to see if emergency measures can be enacted
+		for(int i = 0; i < powers.length; i++)
+		{
+			if(powers[i].hasEmergency())
+			{
+				boolean hasNoHomeSCs = true;
+				boolean hasAllHomeSCs = true;
+				
+				Province[] homeSupplyCenters = position.getHomeSupplyCenters(powers[i]);
+				for(int j = 0; j < homeSupplyCenters.length; j++)
+				{
+					if(powers[i] == position.getSupplyCenterOwner(homeSupplyCenters[j]))
+						hasNoHomeSCs = false;
+					else
+						hasAllHomeSCs = false;
+				}
+				
+				if(!hasNoHomeSCs && !hasAllHomeSCs)
+					adjMap.get(powers[i]).hasEmergency = true;
+			}
+		}
+		
 		return adjMap;
-	}// getAdjustmentInfo()	
+	}// getAdjustmentInfoMap()	
 	
 	
 	
@@ -186,6 +227,7 @@ public class Adjustment
 		private int numOccHSC = 0;	// # of occupied owned home supply centers
 		private int numOccSC = 0;		// # of occupied non-home supply centers
 		private int numDislodgedUnits = 0;	// # of dislodged units
+		private boolean hasEmergency = false; // if emergency measures can be enacted
 		
 		private int adj = 0;			// the adjustment amount, as determined by calculate()
 		private boolean isCalc = false;	// if we have been calculated
@@ -239,7 +281,11 @@ public class Adjustment
 				// e.g.:
 				// 		3 builds, 3 empty owned home supply centers: adjustments: +3
 				// 		3 builds, 2 empty owned home supply centers: adjustments: +2
-				adj = numSC - numUnits;
+				if(hasEmergency)
+					System.out.println("Foo");
+				else
+					System.out.println("Bar");
+				adj = numSC - numUnits + (hasEmergency ? 1 : 0);
 				adj = (adj > (numHSC - numOccHSC)) ? (numHSC - numOccHSC) : adj;
 			}
 			else if(buildOpt == RuleOptions.VALUE_BUILDS_ANY_OWNED)
@@ -247,14 +293,14 @@ public class Adjustment
 				// We can build in any owned supply center. Effectively, then, 
 				// ALL owned supply centers are home supply centers.
 				numHSC = numSC;
-				adj = (numSC - numUnits);
+				adj = (numSC - numUnits) + (hasEmergency ? 1 : 0);
 				adj = (adj > (numSC - numOccSC)) ? (numSC - numOccSC) : adj;
 			}
 			else if(buildOpt == RuleOptions.VALUE_BUILDS_ANY_IF_HOME_OWNED)
 			{
 				// We can build in any supply center, if at least ONE home supply
 				// center is owned.
-				adj = numSC - numUnits;
+				adj = numSC - numUnits + (hasEmergency ? 1 : 0);
 				adj = (adj > 0 && numHSC < 1) ? 0 : adj;
 				adj = (adj > (numSC - numOccSC)) ? (numSC - numOccSC) : adj;
 			}

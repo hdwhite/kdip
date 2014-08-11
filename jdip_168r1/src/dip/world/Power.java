@@ -39,6 +39,7 @@ public class Power implements Comparable, java.io.Serializable
 	// immutable fields
 	private final String[] names;		// length >= 1
 	private final boolean isActive;
+	private final boolean hasEmergency;
 	private final String adjective;
 	
 	
@@ -60,7 +61,7 @@ public class Power implements Comparable, java.io.Serializable
 	*	Power uses instance equality, so two Power() objects created with the same arguments
 	*	will NOT be the same.
 	*/
-	public Power(String[] names, String adjective, boolean isActive)
+	public Power(String[] names, String adjective, boolean isActive, boolean hasEmergency)
 	{
 		if(names == null || adjective == null)
 		{
@@ -80,6 +81,7 @@ public class Power implements Comparable, java.io.Serializable
 		this.names = names;
 		this.adjective = adjective;
 		this.isActive = isActive;
+		this.hasEmergency = hasEmergency;
 	}// Power()
 	
 	
@@ -104,6 +106,9 @@ public class Power implements Comparable, java.io.Serializable
 	
 	/** Determines if this power is active. Only active powers can order units. */
 	public boolean isActive()						{ return isActive; }
+	
+	/** Determines if this power can enact emergency measures. */
+	public boolean hasEmergency()					{ return hasEmergency; }
 	
 	
 	/** Implementation of Object.hashCode() */
