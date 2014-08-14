@@ -27,7 +27,7 @@ import javax.swing.undo.AbstractUndoableEdit;
 
 /**
 *
-*	XAbstractUndoableEdit is the base class for all jDip undoable edits.
+*	XAbstractUndoableEdit is the base class for all kDip undoable edits.
 *	it provides base functionality and ensures serialization goes smoothly.
 *	
 */	

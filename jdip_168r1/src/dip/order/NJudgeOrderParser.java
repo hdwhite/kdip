@@ -53,8 +53,8 @@ import dip.world.Unit;
 *	or Retreat phase orders, a similar hint PhaseType.ADJUSTMENT is
 *	required.
 *	<p>
-*	Not all nJudge orders have a 1:1 mapping with jDip orders.
-*	For example, jDip waive orders currently require a Province; 
+*	Not all nJudge orders have a 1:1 mapping with kDip orders.
+*	For example, kDip waive orders currently require a Province; 
 *	nJudge orders do not. Unusable waived builds and unusable pending
 *	builds, as well as waived builds, are not converted to orders
 *	but are denoted specifically in the returned NJudgeOrder. 
@@ -380,12 +380,12 @@ public class NJudgeOrderParser
 		/**
 		*	Returns if a Build has been waived..
 		*	Because nJudge Waive orders do not support a Province, 
-		*	and jDip Waive orders require a Province, Waive orders are not 
+		*	and kDip Waive orders require a Province, Waive orders are not 
 		*	(yet) fully supported. 
 		*	<p>
 		*	If this is NOT a waived build, this will return <code>false</code>.
 		*	<p>
-		*	This will be removed in a future version, when jDip-style Waive
+		*	This will be removed in a future version, when kDip-style Waive
 		*	orders are fully supported.
 		*	<p>
 		*	Note that this applies only to ADJUSTMENT phase orders. This will 

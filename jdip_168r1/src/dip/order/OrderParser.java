@@ -166,7 +166,7 @@ public class OrderParser
 		{"->", " m "},
 		{"=>", " m "},
 		{"-", " m "},
-		{"\u2192", " m "},			// unicode ARROW as used by jDip
+		{"\u2192", " m "},			// unicode ARROW as used by kDip
 		{"retreats to ", " m "}, // NOTE: space after "to" to avoid ambiguity e.g., "army bre retreats tol"
 		{"retreat to ", " m "},
 		{"retreats", " m "}, 	// plural first
@@ -1083,7 +1083,7 @@ public class OrderParser
 	/** 
 	*	Creates a Disband or Remove order, depending upon the phase.
 	*	Since some people use "Disband" to mean "Remove" and vice-versa, 
-	*	but jDip interprets them differently (Disband is for retreat 
+	*	but kDip interprets them differently (Disband is for retreat 
 	*	phase, Remove is for adjustment phase). If the phase is not
 	*	adjustment or retreat, we create the 'desired' order, so that 
 	*	the error message is correct.

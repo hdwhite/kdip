@@ -582,7 +582,7 @@ final class JudgeImportHistory
 					
 					/* Try the order once more.
 					 * nJudge accepts illegal moves as valid as long as the syntax is valid.
-					 * (Perhaps a few other things as well). jDip should accept these as well,
+					 * (Perhaps a few other things as well). kDip should accept these as well,
 					 * even if the move is illegal.
 					 */
 					try 

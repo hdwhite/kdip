@@ -113,7 +113,7 @@ public class MapPanelSVGAction
 				return;
 			}
 			
- 			new Thread(getPMTG(mp), "jdipPrintThread")
+ 			new Thread(getPMTG(mp), "kdipPrintThread")
 			{
 				public void run()
 				{
@@ -214,7 +214,7 @@ public class MapPanelSVGAction
 				return;
 			}
 			
-			new Thread(getPMTG(mp), "jdipExportSVGThread")
+			new Thread(getPMTG(mp), "kdipExportSVGThread")
 			{
 				public void run()
 				{

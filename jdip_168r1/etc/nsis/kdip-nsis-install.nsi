@@ -3,9 +3,9 @@
 ; 
 
 ; HM NIS Edit Wizard helper defines
-!define PRODUCT_NAME "jDip"
-!define PRODUCT_VERSION "1.7.0"
-!define PRODUCT_WEB_SITE "http://jdip.sourceforge.net"
+!define PRODUCT_NAME "kDip"
+!define PRODUCT_VERSION "1.0.0"
+!define PRODUCT_WEB_SITE "http://github.com/hdwhite/kdip"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
@@ -48,8 +48,8 @@ ReserveFile "jre-1_5_0_03-windows-i586-p-iftw.exe" ;JAVA_INSTALLER
 
 ; MUI end ------
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "..\..\build\packages\jdip-${PRODUCT_VERSION}-setup.exe"
-InstallDir "$PROGRAMFILES\jDip"
+OutFile "..\..\build\packages\kdip-${PRODUCT_VERSION}-setup.exe"
+InstallDir "$PROGRAMFILES\kDip"
 ShowInstDetails show
 ShowUnInstDetails show
 
@@ -57,12 +57,12 @@ Section "MainSection" SEC01
   ; root dir
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
-  File "..\..\build\jardist\jdip.exe"		; THIS MUST BE CREATED with launch4j
+  File "..\..\build\jardist\kdip.exe"		; THIS MUST BE CREATED with launch4j
   File "..\..\build\jardist\HISTORY.TXT"
   File "..\..\build\jardist\CHANGELOG.TXT"
   File "..\..\build\jardist\README.TXT"
   File "..\..\build\jardist\LICENSE.TXT"
-  File "..\..\build\jardist\jdip.jar"
+  File "..\..\build\jardist\kdip.jar"
   ; lib dir
   File /r "..\..\build\jardist\lib" 
   ; variants dir
@@ -73,9 +73,9 @@ SectionEnd
 
 Section -AdditionalIcons
   WriteIniStr "$INSTDIR\${PRODUCT_NAME}.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
-  CreateDirectory "$SMPROGRAMS\jDip"
-  CreateShortCut "$SMPROGRAMS\jDip\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
-  CreateShortCut "$SMPROGRAMS\jDip\jDip.lnk" "$INSTDIR\jDip.exe" 
+  CreateDirectory "$SMPROGRAMS\kDip"
+  CreateShortCut "$SMPROGRAMS\kDip\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url"
+  CreateShortCut "$SMPROGRAMS\kDip\kDip.lnk" "$INSTDIR\kDip.exe" 
 SectionEnd                        
 
 Section -Post
@@ -106,23 +106,23 @@ FunctionEnd
 Section Uninstall
   Delete "$INSTDIR\${PRODUCT_NAME}.url"
   Delete "$INSTDIR\uninst.exe"
-  Delete "$INSTDIR\jdip.jar"
-  Delete "$INSTDIR\jdip.exe"
+  Delete "$INSTDIR\kdip.jar"
+  Delete "$INSTDIR\kdip.exe"
   Delete "$INSTDIR\LICENSE.TXT"
   Delete "$INSTDIR\README.TXT"
   Delete "$INSTDIR\CHANGELOG.TXT"
   Delete "$INSTDIR\HISTORY.TXT"
-  Delete "$INSTDIR\jdip.bat"
+  Delete "$INSTDIR\kdip.bat"
 
   RMDir /r "$INSTDIR\plugins"
   RMDir /r "$INSTDIR\lib"
   RMDir /r "$INSTDIR\variants"
 
-  Delete "$SMPROGRAMS\jDip\Uninstall.lnk"
-  Delete "$SMPROGRAMS\jDip\Website.lnk"
-  Delete "$SMPROGRAMS\jDip\jDip.lnk"
+  Delete "$SMPROGRAMS\kDip\Uninstall.lnk"
+  Delete "$SMPROGRAMS\kDip\Website.lnk"
+  Delete "$SMPROGRAMS\kDip\kDip.lnk"
 
-  RMDir "$SMPROGRAMS\jDip"
+  RMDir "$SMPROGRAMS\kDip"
   RMDir "$INSTDIR"
 
   DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
@@ -133,10 +133,10 @@ SectionEnd
 ; Custom pages
 LangString TEXT_IO_TITLE ${LANG_ENGLISH} "Analyzing System"
 LangString TEXT_IO_SUBTITLE ${LANG_ENGLISH} "Checks that the required version of Java is installed."
-LangString TEXT_JAVA_REQUIRED ${LANG_ENGLISH} "jDip requires that Java is installed or requires a newer \
+LangString TEXT_JAVA_REQUIRED ${LANG_ENGLISH} "kDip requires that Java is installed or requires a newer \
  version than is currently installed. $\n$\nTo download the most current version of Java, select Yes below.$\n \
  Note that the download size may be upto 15 MB."
-LangString TEXT_JAVA_OPTIONAL ${LANG_ENGLISH} "While jDip will run with the version of Java detected on your \
+LangString TEXT_JAVA_OPTIONAL ${LANG_ENGLISH} "While kDip will run with the version of Java detected on your \
  computer, a newer version of Java is available.$\nUpdating requires a 2 to 15 MB download. $\n$\nWould you like \
  to update?"
 
@@ -172,7 +172,7 @@ Function JavaVersionCheck
         goto done
   refuseJava:
         ; java needed, but refused. abort.
-        MessageBox MB_OK  "jDip cannot be installed unless Java version 1.4.2 or higher has been installed."
+        MessageBox MB_OK  "kDip cannot be installed unless Java version 1.4.2 or higher has been installed."
         Quit
   neededJavaInstall:
         ; java needed. if install fails, abort.
@@ -185,7 +185,7 @@ Function JavaVersionCheck
         IntCmp $0 done badInstall badInstall
         goto done
   badInstallAbort:
-        MessageBox MB_OK "Java installation failed; jDip cannot be installed. Please uninstall Java and try again."
+        MessageBox MB_OK "Java installation failed; kDip cannot be installed. Please uninstall Java and try again."
         Quit
   badInstall:
         MessageBox MB_OK "Java could not be updated to the most current version."

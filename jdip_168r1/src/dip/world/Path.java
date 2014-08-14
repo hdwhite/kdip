@@ -78,7 +78,7 @@ public class Path extends Object
 	*	Convenience Method.
 	*	<p>
 	*	This is analagous to other getConvoyRouteEvaluation() methods, however,
-	*	it will work for both Implicit (jDip finds a path) and Explicit (paths
+	*	it will work for both Implicit (kDip finds a path) and Explicit (paths
 	*	were specified in the Move order, judge-style) paths in a Move order.
 	*	<p>
 	*	This decides whether to use implicit or explicit paths based on if

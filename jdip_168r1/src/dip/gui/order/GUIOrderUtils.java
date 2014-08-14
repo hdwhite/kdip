@@ -638,7 +638,7 @@ final class GUIOrderUtils
 	
 	/** 
 	*	Formats a Floating-Point value into a String,
-	*	using the jDip default precision.
+	*	using the kDip default precision.
 	*/
 	public static String floatToString(float v)
 	{
@@ -647,7 +647,7 @@ final class GUIOrderUtils
 	
 	/** 
 	*	Formats a Floating-Point value into a StringBuffer,
-	*	using the jDip default precision.
+	*	using the kDip default precision.
 	*/
 	public static void appendFloat(StringBuffer sb, float v)
 	{

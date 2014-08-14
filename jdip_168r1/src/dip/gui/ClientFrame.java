@@ -1123,7 +1123,7 @@ public class ClientFrame extends JFrame
 		// main command line handler
 		CmdLineHandler cl = new VersionCmdLineHandler(getVersion(),
 			new HelpCmdLineHandler(helpText,
-				"jdip",
+				"kdip",
 				"Adjudicator and Game Manager for multiplayer diplomacy-based strategy games",
 				// options
 				new Parameter[] {argLocale, argLogFile, argVariantPath, validateOpt, splashOpt, defaultGUI},

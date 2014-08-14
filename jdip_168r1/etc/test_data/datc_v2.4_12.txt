@@ -22,7 +22,7 @@ VARIANT_ALL DATC_1898
 
 # Build fails until Home SC captured
 # 
-# jDip note:
+# kDip note:
 # NOTE: The adjudicator does not consider any builds to be valid here, 
 # since no home supply centers exist (thus there are no builds). 
 # This order fails, because it is ignored by the adjudicator (which 

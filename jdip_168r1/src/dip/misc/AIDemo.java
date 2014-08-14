@@ -5,7 +5,7 @@
 //	
 //  This module (AIDemo.java) is example code; all or part of this code
 //	may be freely used in your own programs without attribution and without
-//	restriction. Note that that is not the case for most other jDip source 
+//	restriction. Note that that is not the case for most other kDip source 
 //	and binary modules; see their licensing information for details.
 //
 package dip.misc;
@@ -37,7 +37,7 @@ import dip.world.variant.data.Variant;
 *	It is to be run from the command line. Most exceptions will cause
 *	an abort, and be displayed on the command line.
 *	<p>
-*	Normally, jDip will create a World object, which has an initial TurnState.
+*	Normally, kDip will create a World object, which has an initial TurnState.
 *	Orders and units are added to the TurnState. When the TurnState is resolved,
 *	a new TurnState is added to the world. 
 *	<p>
@@ -99,13 +99,13 @@ public class AIDemo
 	
 	/**
 	*	Create the World. The World, and its components, are required for
-	*	most operations by jDip.
+	*	most operations by kDip.
 	*/
 	private World createStandardWorld()
 	throws Exception
 	{
-		// Get default variant directory, where the jDip variants are stored.
-		// This assumes the standard jdip package layout.
+		// Get default variant directory, where the kDip variants are stored.
+		// This assumes the standard kdip package layout.
 		// 
 		File defaultVariantSearchDir = null;
 		if(System.getProperty("user.dir") == null)

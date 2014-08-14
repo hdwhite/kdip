@@ -564,7 +564,7 @@ public class HeaderDialog extends XDialog
 		}// paintComponent()
 		
 		
-		/** jDip-specific setup */
+		/** kDip-specific setup */
 		private void customize()
 		{
 			setContentType("text/html");

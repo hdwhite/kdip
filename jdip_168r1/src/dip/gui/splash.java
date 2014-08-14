@@ -55,7 +55,7 @@ public final class splash
 	private static splashRunner sprunner = null;
 	
 	
-	/** Starts the Splash screen, then starts loading jDip (ClientFrame) */
+	/** Starts the Splash screen, then starts loading kDip (ClientFrame) */
 	public static void main(String args[])
 	{
 		//long time = System.currentTimeMillis();
@@ -155,7 +155,7 @@ public final class splash
 			catch(Throwable t)
 			{
 				// be a bit facetious
-				System.err.println("jDip requires a computer with a mouse, keyboard, monitor,"); 
+				System.err.println("kDip requires a computer with a mouse, keyboard, monitor,"); 
 				System.err.println("and graphical environment (e.g., XWindows) to run.");
 				System.exit(1);
 			}
@@ -245,7 +245,7 @@ public final class splash
 			
 			// print an error to stderr
 			// 
-			System.err.println("jDip requires Java version 1.4 or greater to be installed.");
+			System.err.println("kDip requires Java version 1.4 or greater to be installed.");
 			System.err.println("The detected Java version is: "+version+", by "+vendor);
 			System.err.println("An updated version of Java may be obtained from:");
 			System.err.println("   http://www.java.com");
@@ -260,8 +260,8 @@ public final class splash
 			//
 			try
 			{
-				final Frame dlgFrame = new Frame("jDip");
-				final Dialog dlg = new Dialog(dlgFrame, "jDip Error", true);
+				final Frame dlgFrame = new Frame("kDip");
+				final Dialog dlg = new Dialog(dlgFrame, "kDip Error", true);
 				
 				dlg.addWindowListener(new WindowAdapter()
 				{
@@ -289,7 +289,7 @@ public final class splash
 				panel.add(button);
 				
 				dlg.setLayout(new GridLayout(6,1,0,0));
-				dlg.add(new Label("jDip requires a Java 1.4 or later to be installed."));
+				dlg.add(new Label("kDip requires a Java 1.4 or later to be installed."));
 				dlg.add(new Label("The Java version detected was: "+version+" from "+vendor));
 				dlg.add(new Label("Please obtain a newer version from a site below:"));
 				dlg.add(new Label("  * http://www.java.com"));

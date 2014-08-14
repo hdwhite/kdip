@@ -2155,7 +2155,7 @@ END
 
 
 # Pandin's extended paradox
-# 2000 rules used, because, syzkman only is used by jdip
+# 2000 rules used, because, syzkman only is used by kdip
 # when 2000 rules break down.
 #
 CASE 6.F.17 (Pandin's extended paradox)

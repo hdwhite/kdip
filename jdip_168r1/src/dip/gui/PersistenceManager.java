@@ -97,7 +97,7 @@ public class PersistenceManager
 		this.clientFrame = clientFrame;
 		
 		// create the persistance-manager threadgroup
-		persistTG = new ThreadGroup(Thread.currentThread().getThreadGroup(), "jdipPMGroup");
+		persistTG = new ThreadGroup(Thread.currentThread().getThreadGroup(), "kdipPMGroup");
 		
 		// by default, disable Save/Save As until we open/new something.
 		setSaveEnabled(false);
@@ -126,7 +126,7 @@ public class PersistenceManager
 	/** 
 	*	Threads added to this ThreadGroup will be joined() at exit
 	* 	(with a pre-defined timeout) such that they will complete
-	*	before jDip exits. 
+	*	before kDip exits. 
 	*	<p>
 	*	This ensures that certain IO operations (e.g., Exports)
 	*	will not be aborted at exit.

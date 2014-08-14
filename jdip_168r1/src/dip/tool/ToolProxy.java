@@ -28,7 +28,7 @@ import dip.world.World;
 
 /**
 *
-*	Proxy object which facilitates communication between a Tool and jDip 
+*	Proxy object which facilitates communication between a Tool and kDip 
 *	internal data structures.
 *	<p>
 *	This API has not yet been defined, and remains in flux.

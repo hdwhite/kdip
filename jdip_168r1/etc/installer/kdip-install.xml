@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <installation version="1.0">
     <info>
-        <appname>jDip</appname>
+        <appname>kDip</appname>
         <appversion>!VERSION!</appversion>
         <javaversion>1.4</javaversion>
         <authors>
 			<!-- <author name="The jDip Development Team" email="jdip-users@sourceforge.net"/> -->
+			<!-- <author name="Harry White" email="hdwhite@vt.edu"/> -->
 		</authors>
-        <url>http://jdip.sourceforge.net/</url>
+        <url>http://github.com/hdwhite/kdip</url>
     </info>
     
 	<guiprefs width="800" height="600" resizable="yes">
@@ -79,12 +80,12 @@
     
 	<packs>
         <pack name="Core" required="yes" override="true">
-            <description>The core jDip program files, the standard map, and variants based on the standard map. This is a required install. Standard-based variants include 1898, Britain, Crowded, Crowded 1898, Fleet Rome, Shift Around, Shift Left, and Shift Right.</description>
+            <description>The core kDip program files, the standard map, and variants based on the standard map. This is a required install. Standard-based variants include 1898, Britain, Crowded, Crowded 1898, Fleet Rome, Shift Around, Shift Left, and Shift Right.</description>
 			
 			<file targetdir="$INSTALL_PATH" src="lib"/>
-            <file targetdir="$INSTALL_PATH" src="jdip.ico"/>
+            <file targetdir="$INSTALL_PATH" src="kdip.ico"/>
 			
-            <file targetdir="$INSTALL_PATH" src="jdip.jar"/>
+            <file targetdir="$INSTALL_PATH" src="kdip.jar"/>
             <file targetdir="$INSTALL_PATH" src="LICENSE.TXT"/>
             <file targetdir="$INSTALL_PATH" src="HISTORY.TXT"/>
             <file targetdir="$INSTALL_PATH" src="README.TXT"/>
@@ -99,15 +100,19 @@
 			<file targetdir="$INSTALL_PATH/variants" src="variants/ancmedSymbols.zip"/>
 			
 			
-            <file os="windows" targetdir="$INSTALL_PATH" src="jdip.bat"/>
-            <file os="unix" targetdir="$INSTALL_PATH" src="jdip.sh" keep="true"/>
-            <file os="mac" targetdir="$INSTALL_PATH" src="jdip.sh" keep="true"/>
+            <file os="windows" targetdir="$INSTALL_PATH" src="kdip.bat"/>
+            <file os="unix" targetdir="$INSTALL_PATH" src="kdip.sh" keep="true"/>
+            <file os="mac" targetdir="$INSTALL_PATH" src="kdip.sh" keep="true"/>
 			
 			<!-- set executable flag for shell script on unix -->
-			<executable os="unix" targetfile="$INSTALL_PATH/jdip.sh" stage="never" failure="warn" type="bin"/>
-			<executable os="mac" targetfile="$INSTALL_PATH/jdip.sh" stage="never" failure="warn" type="bin"/>
+			<executable os="unix" targetfile="$INSTALL_PATH/kdip.sh" stage="never" failure="warn" type="bin"/>
+			<executable os="mac" targetfile="$INSTALL_PATH/kdip.sh" stage="never" failure="warn" type="bin"/>
          </pack>
-		
+	
+		<pack name="1900" required="no" override="true">
+			<description>The 1900 variant.</description>
+            <file targetdir="$INSTALL_PATH/variants" src="variants/1900Variants.zip"/>
+		</pack>	
 		<pack name="Aberration" required="no" override="true">
 			<description>The Aberration V variant.</description>
             <file targetdir="$INSTALL_PATH/variants" src="variants/aberrationVariant.zip"/>

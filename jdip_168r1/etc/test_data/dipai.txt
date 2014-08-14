@@ -2,7 +2,7 @@
 #
 #	DipAI test harness
 #
-#	For speed comparisions between jDip and the 
+#	For speed comparisions between kDip and the 
 #	DipAI adjudicator written in C
 #
 #	Moves are from harness.c

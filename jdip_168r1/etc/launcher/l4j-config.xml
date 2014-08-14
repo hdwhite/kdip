@@ -1,7 +1,7 @@
 <launch4jConfig>
 	<headerType>0</headerType>
-	<jar>..\..\build\jardist\jdip.jar</jar>
-	<outfile>..\..\build\jardist\jdip.exe</outfile>
+	<jar>..\..\build\jardist\kdip.jar</jar>
+	<outfile>..\..\build\jardist\kdip.exe</outfile>
 	
 	<!-- icon in .ico format; should have 64, 32, and 16 in one -->
 	
@@ -14,16 +14,16 @@
 		<args>Xss1024K</args>
 	</jre>
 	<versionInfo>
-		<fileVersion>1.7.0</fileVersion>
-		<txtFileVersion>jDip 1.7.0</txtFileVersion>
-		<fileDescription>jDip</fileDescription>
-		<copyright>2005</copyright>
-		<productVersion>1.7.0</productVersion>
+		<fileVersion>1.0.0</fileVersion>
+		<txtFileVersion>kDip 1.0.0</txtFileVersion>
+		<fileDescription>kDip</fileDescription>
+		<copyright>2014</copyright>
+		<productVersion>1.0.0</productVersion>
 		<txtProductVersion>text</txtProductVersion>
-		<productName>jDip</productName>
-		<companyName>http://jdip.sourceforge.net/</companyName>
-		<internalName>jDip</internalName>
-		<originalFilename>jdip.exe</originalFilename>
+		<productName>kDip</productName>
+		<companyName>http://github.com/hdwhite/kdip</companyName>
+		<internalName>kDip</internalName>
+		<originalFilename>kdip.exe</originalFilename>
 	</versionInfo>
 </launch4jConfig>	
 	

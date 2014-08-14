@@ -381,13 +381,13 @@ public class ErrorDialog extends TextViewer
 	}// displayVariantNotAvailable()
 	
 	
-	/** Prepends the jDip and Java version/etc info to the stack trace */
+	/** Prepends the kDip and Java version/etc info to the stack trace */
 	private static String getStackTrace(Throwable t)
 	{
 		StringBuffer sb = new StringBuffer(2048);
 		StackTraceElement[] ste = t.getStackTrace();
 		
-		sb.append("jDip version: ");
+		sb.append("kDip version: ");
 		sb.append(ClientFrame.getVersion());
 		
 		try
@@ -468,7 +468,7 @@ public class ErrorDialog extends TextViewer
 	/** 
 	*	Create an ErrorDialog that is setup with a single button.
 	*	However, if submittable is set to true, a "submit" button is also present,
-	*	to send the bug report to the jDip bug report database.
+	*	to send the bug report to the kDip bug report database.
 	*/
 	private static ErrorDialog getOneButtonDialog(final JFrame parent, 
 		String title, final String text, final String rawText, 
@@ -528,7 +528,7 @@ public class ErrorDialog extends TextViewer
 	*	Create an ErrorDialog that is setup with two buttons, 
 	*	the second of which exits the program.
 	*	However, if submittable is set to true, a "submit" button is also present,
-	*	to send the bug report to the jDip bug report database.
+	*	to send the bug report to the kDip bug report database.
 	*	rawText is the error-message alone (no dialog text)
 	*/
 	private static ErrorDialog getForcedExitDialog(final JFrame parent, 
@@ -663,7 +663,7 @@ public class ErrorDialog extends TextViewer
 	}// submitBug()
 	
 	/**
-	*	Send bug report to jDip website. Synchronous. Will not
+	*	Send bug report to kDip website. Synchronous. Will not
 	*	throw further exceptions (unless a null String is passed).
 	*	BugReportInfo is allowed to be null.
 	*/
@@ -676,7 +676,7 @@ public class ErrorDialog extends TextViewer
 			
 			fields:
 				brHeader		constant header
-				brVersion		jdip version
+				brVersion		kdip version
 				brBriefing		brief version of exception
 								(exception name + message)
 				brSystemInfo	system information
@@ -704,13 +704,13 @@ public class ErrorDialog extends TextViewer
 			urlConn.setUseCaches(false);
 			urlConn.setRequestProperty("Content-Type","application/x-www-form-urlencoded"); 
 			urlConn.setRequestProperty("Accept-Charset", "*");
-			urlConn.setRequestProperty("User-Agent", "jDip");
+			urlConn.setRequestProperty("User-Agent", "kDip");
 			
 			wr = new OutputStreamWriter(urlConn.getOutputStream());
 			
 			// write header
 			wr.write("&brHeader=");
-			wr.write(encode("JDIP_REMOTE_BUG_REPORT"));
+			wr.write(encode("KDIP_REMOTE_BUG_REPORT"));
 			
 			// version
 			wr.write("&brVersion=");

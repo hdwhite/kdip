@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <shortcuts>
-  	<programGroup defaultName="jDip" location="applications"/>
+  	<programGroup defaultName="kDip" location="applications"/>
 	<shortcut
-		 name="jDip"
+		 name="kDip"
 		 programGroup="yes"
 		 desktop="yes"
 		 applications="no"
 		 startMenu="no"
 		 startup="no"
 		 workingDirectory="$INSTALL_PATH\"
-		 target="$INSTALL_PATH\jdip.bat"
+		 target="$INSTALL_PATH\kdip.bat"
 		 commandLine=""
-		 description="jDip"
-		 iconFile="$INSTALL_PATH\jdip.ico"
+		 description="kDip"
+		 iconFile="$INSTALL_PATH\kdip.ico"
 		 iconIndex="0"
 		 initialState="noShow">
 		 
@@ -20,7 +20,7 @@
     </shortcut>
     
 	<shortcut
-        name="Uninstall jDip"
+        name="Uninstall kDip"
         programGroup="yes"
         desktop="no"
         applications="no"
@@ -28,7 +28,7 @@
         startup="no"
         target="$INSTALL_PATH\Uninstaller\uninstaller.jar"
         commandLine=""
-        description="jDip Uninstall">
+        description="kDip Uninstall">
         
 		<createForPack name="Core" />
     </shortcut>

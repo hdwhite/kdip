@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<ruleset name="jdip_pmd_rules">
+<ruleset name="kdip_pmd_rules">
   <description>
-  jDip PMD rules
+  kDip PMD rules
   </description>
   
   <rule ref="rulesets/basic.xml"/>
