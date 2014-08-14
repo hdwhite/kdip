@@ -281,10 +281,6 @@ public class Adjustment
 				// e.g.:
 				// 		3 builds, 3 empty owned home supply centers: adjustments: +3
 				// 		3 builds, 2 empty owned home supply centers: adjustments: +2
-				if(hasEmergency)
-					System.out.println("Foo");
-				else
-					System.out.println("Bar");
 				adj = numSC - numUnits + (hasEmergency ? 1 : 0);
 				adj = (adj > (numHSC - numOccHSC)) ? (numHSC - numOccHSC) : adj;
 			}
