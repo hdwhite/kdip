@@ -20,7 +20,7 @@
 		<tocitem text="0.80" target="ver080_htm"/>
 		<tocitem text="0.75" target="ver075_htm"/>
 	</tocitem>
-	<tocitem text="Working with jDip" expand="false">
+	<tocitem text="Working with kDip" expand="false">
 		<tocitem text="The Interface" target="The_Interface"/>
 		<tocitem text="Starting A New Game" target="Starting_A_New_Game"/>
 		<tocitem text="Starting a New Face-to-Face Game" target="StartF2F"/>

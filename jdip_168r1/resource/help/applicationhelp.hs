@@ -3,7 +3,7 @@
   PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp HelpSet Version 2.0//EN"
          "http://java.sun.com/products/javahelp/helpset_2_0.dtd">
 <helpset version="2.0">
-	<title>jDip Help</title>
+	<title>kDip Help</title>
 	<maps>
 		<homeID>Welcome</homeID>
 		<mapref location="applicationhelp_map.jhm"/>
@@ -20,7 +20,7 @@
 		<name>main_help_window</name>
 		<size width="640" height="480"/>
 		<location x="150" y="150"/>
-		<title>jDip Help</title>
+		<title>kDip Help</title>
 		<image>cornericon</image>
 		<toolbar>
 			<helpaction>javax.help.BackAction</helpaction>
