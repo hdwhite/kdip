@@ -288,6 +288,12 @@ public class PersistenceManager
 		setTitle(world);
 		GeneralPreferencePanel.setRecentFileName(file);
 		clientFrame.getClientMenu().setSelected(ClientMenu.EDIT_EDIT_MODE, false);
+		clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_UNITS, true);
+		clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_DISLODGED_UNITS, true);
+		clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_SUPPLY_CENTERS, true);
+		clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_INFLUENCE, true);
+		clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_SHOW_MAP, true);
+		clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_UNORDERED, false);
 		clientFrame.getClientMenu().setViewNames();
 		clientFrame.getClientMenu().updateRecentFiles();
 
@@ -319,6 +325,12 @@ public class PersistenceManager
 				setChanged(false);
 				setSaveEnabled(true);
 				clientFrame.getClientMenu().setSelected(ClientMenu.EDIT_EDIT_MODE, false);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_UNITS, true);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_DISLODGED_UNITS, true);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_SUPPLY_CENTERS, true);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_INFLUENCE, true);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_SHOW_MAP, true);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_UNORDERED, false);
 				clientFrame.getClientMenu().setViewNames();
 				setTitle(world);
 				
@@ -352,6 +364,12 @@ public class PersistenceManager
 				setChanged(false);
 				setSaveEnabled(true);
 				clientFrame.getClientMenu().setSelected(ClientMenu.EDIT_EDIT_MODE, false);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_UNITS, true);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_DISLODGED_UNITS, true);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_SUPPLY_CENTERS, true);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_INFLUENCE, true);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_SHOW_MAP, true);
+				clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_UNORDERED, false);
 				clientFrame.getClientMenu().setViewNames();
 				setTitle(world);
 				
@@ -579,6 +597,12 @@ public class PersistenceManager
 						setChanged(true);
 						setSaveEnabled(true);
 						clientFrame.getClientMenu().setSelected(ClientMenu.EDIT_EDIT_MODE, false);
+						clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_UNITS, true);
+						clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_DISLODGED_UNITS, true);
+						clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_SUPPLY_CENTERS, true);
+						clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_INFLUENCE, true);
+						clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_SHOW_MAP, true);
+						clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_UNORDERED, false);
 						clientFrame.getClientMenu().setViewNames();
 						setTitle(world);
 					}
@@ -586,6 +610,12 @@ public class PersistenceManager
 					// we modified the current world
 					setChanged(true);
 					clientFrame.getClientMenu().setSelected(ClientMenu.EDIT_EDIT_MODE, false);
+					clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_UNITS, true);
+					clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_DISLODGED_UNITS, true);
+					clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_SUPPLY_CENTERS, true);
+					clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_INFLUENCE, true);
+					clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_SHOW_MAP, true);
+					clientFrame.getClientMenu().setSelected(ClientMenu.VIEW_UNORDERED, false);
 					clientFrame.fireTurnstateChanged(currentWorld.getLastTurnState());
 				}
 				clientFrame.fireStateModified();
