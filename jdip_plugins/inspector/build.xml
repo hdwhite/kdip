@@ -9,7 +9,7 @@
 	<property name="plugin.name" value="InspectorTool"/>
 	
 	<!-- where jdip.jar is, and any associated jdip libraries -->
-	<property name="jdip.base" value="../../jdip_168r1"/>
+	<property name="jdip.base" value="../../kdip"/>
 	
 	<!-- build properties -->
 	<property name="debug" value="true"/>
